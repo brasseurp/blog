@@ -1,0 +1,12 @@
+---
+title: "Bienevenue sur mon blog"
+author: "Pierre Brasseur"
+date: "2024-07-18"
+categories: [blog, sociologie]
+# image: "image.jpg"
+---
+
+Bienvenue sur mon blog !
+
+Vous y trouverez mes dernières nouvelles, mes lectures, mes cours et mes
+publications.

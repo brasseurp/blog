@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Pierre Brasseur">
+<meta name="dcterms.date" content="2024-08-04">
+
+<title>Blog de Pierre Brasseur - Déterminer le sexe de quelqu’un</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Blog de Pierre Brasseur</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">A propos</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brasseurp"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/p_brasseur"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Déterminer le sexe de quelqu’un</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">blog</div>
+                <div class="quarto-category">sociologie</div>
+                <div class="quarto-category">sexe</div>
+                <div class="quarto-category">sport</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Pierre Brasseur </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 4, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="déterminer-le-sexe-de-quelquun-un-regard-sur-lhistoire-et-la-science" class="level3">
+<h3 class="anchored" data-anchor-id="déterminer-le-sexe-de-quelquun-un-regard-sur-lhistoire-et-la-science">Déterminer le sexe de quelqu’un : un regard sur l’histoire et la science</h3>
+<p>Déterminer le sexe d’une personne peut sembler simple, mais l’histoire et la science montrent que c’est un sujet complexe et souvent controversé. Ce billet explore les différentes théories et découvertes sur la détermination du sexe à travers les siècles, en abordant les aspects historiques, médicaux et socioculturels.</p>
+<section id="le-modèle-binaire-du-sexe" class="level4">
+<h4 class="anchored" data-anchor-id="le-modèle-binaire-du-sexe">Le modèle binaire du sexe</h4>
+<p>Au XVIIIe siècle, l’Europe a adopté l’idée de deux sexes distincts, remplaçant l’ancien concept d’un sexe unique. Cette vision a été renforcée par la science moderne, qui a étudié minutieusement les différences sexuelles. Thomas Laqueur, dans son livre <em>La fabrique du sexe</em> (2013), explique comment cette division est devenue prédominante. Avant cette époque, les différences entre les sexes étaient souvent perçues comme des variations d’un même thème, plutôt que comme deux catégories distinctes.</p>
+</section>
+<section id="linfluence-de-lanatomie-et-de-la-science" class="level4">
+<h4 class="anchored" data-anchor-id="linfluence-de-lanatomie-et-de-la-science">L’influence de l’anatomie et de la science</h4>
+<p>L’anatomie a joué un rôle crucial dans la consolidation de l’idée de deux sexes distincts. Les scientifiques ont commencé à mesurer le corps humain avec des chiffres et des statistiques pour tenter de démontrer les différences entre les sexes. Ces études ont souvent justifié les différences raciales et sexuelles sous l’influence des idées victoriennes et de l’Empire européen (Bleier, 1984 ; Schiebinger, 1993).</p>
+<p>Après 1890, on pensait que les nerfs contrôlaient les réactions du corps. Mais au début des années 1900, des substances chimiques dans le sang ont été identifiées comme les principaux contrôleurs des réactions corporelles (Oudshoorn, 1994). Les hormones des testicules étaient appelées “hormones mâles” et celles des ovaires “hormones femelles”. Cependant, il a été découvert que ces substances existent aussi dans le sexe opposé, remettant en question les idées de “féminisation” et de “masculinisation”.</p>
+</section>
+<section id="la-théorie-hormonale-et-ses-critiques" class="level4">
+<h4 class="anchored" data-anchor-id="la-théorie-hormonale-et-ses-critiques">La théorie hormonale et ses critiques</h4>
+<p>La théorie hormonale du sexe, largement acceptée au début du XXe siècle, soutenait que les hormones déterminaient les caractéristiques sexuelles masculines et féminines. Cependant, cette théorie a été contestée au fil des décennies. Dans les années 1930, des recherches ont montré que les hormones sexuelles fonctionnaient normalement dans les deux sexes, ce qui a remis en question l’idée que certaines hormones étaient spécifiques à un sexe (Bleier, 1984 ; Fausto-Sterling, 2000). Par exemple, la testostérone et l’œstrogène peuvent se transformer l’une en l’autre et jouent de nombreux rôles dans le corps, indépendamment du sexe.</p>
+</section>
+<section id="les-chromosomes-sexuels-et-la-génétique" class="level4">
+<h4 class="anchored" data-anchor-id="les-chromosomes-sexuels-et-la-génétique">Les chromosomes sexuels et la génétique</h4>
+<p>Au début des années 1900, Stevens et Wilson ont découvert un lien entre chromosomes et sexe. Le chromosome Y a été identifié comme contenant le gène masculin SRY, déclencheur de la formation des testicules (Ford et al.&nbsp;1959; Richardson 2013). Cependant, SRY n’explique pas toujours le caractère d’une personne, et un modèle plus flexible de “cascade régulatrice” a été proposé dans les années 1990, où de nombreux gènes interagissent pour déterminer le sexe (Vilain et al., 1991; McElreavy et al., 1993).</p>
+<p>Les variations chromosomiques découvertes dans les années 1950-1960, comme les syndromes de Down, Turner et Klinefelter, ont remis en question le modèle XX/XY. Ces découvertes ont montré que les combinaisons de chromosomes peuvent être plus variées qu’on ne le pensait auparavant, mais le modèle binaire du sexe persiste souvent en raison de sa simplicité apparente.</p>
+</section>
+<section id="les-personnes-intersexuées-et-les-nouvelles-théories" class="level4">
+<h4 class="anchored" data-anchor-id="les-personnes-intersexuées-et-les-nouvelles-théories">Les personnes intersexuées et les nouvelles théories</h4>
+<p>Les personnes intersexuées, celles dont les caractéristiques sexuelles ne correspondent pas strictement aux catégories de mâle ou de femelle, ont toujours existé. Cependant, leur reconnaissance et leur traitement ont considérablement évolué au fil du temps.</p>
+</section>
+<section id="reconnaissance-et-traitement-historique" class="level4">
+<h4 class="anchored" data-anchor-id="reconnaissance-et-traitement-historique">Reconnaissance et traitement historique</h4>
+<p>Dans les années 1990, Suzanne J. Kessler a montré que les médecins tentaient souvent de “corriger” les corps des personnes intersexuées pour les faire correspondre à l’un des deux sexes (Kessler, 1990). Ces interventions médicales, souvent invasives, étaient basées sur des normes sociétales plutôt que sur des besoins médicaux. Par exemple, les chirurgies étaient fréquemment pratiquées pour modifier les organes génitaux des bébés intersexués afin qu’ils correspondent aux attentes sociales d’apparence masculine ou féminine. Ces interventions visaient à “normaliser” les corps intersexués, souvent sans le consentement éclairé des patients ou de leurs familles.</p>
+</section>
+<section id="protocoles-de-john-money" class="level4">
+<h4 class="anchored" data-anchor-id="protocoles-de-john-money">Protocoles de John Money</h4>
+<p>Dans les années 1950, le psychologue John Money a établi des protocoles pour le traitement des personnes intersexuées, principalement basés sur la taille des organes génitaux. Selon Money, si le phallus d’un bébé était inférieur à une certaine taille, l’enfant était assigné fille et soumis à une chirurgie pour créer des organes génitaux féminins. Si le phallus était plus grand, l’enfant était assigné garçon. Cette approche était très mécanique et ne tenait pas compte des complexités biologiques et des identités de genre des personnes intersexuées.</p>
+</section>
+<section id="activisme-intersexe-et-nouvelles-lignes-directrices" class="level4">
+<h4 class="anchored" data-anchor-id="activisme-intersexe-et-nouvelles-lignes-directrices">Activisme intersexe et nouvelles lignes directrices</h4>
+<p>L’activisme des personnes intersexuées et de leurs alliés a conduit à une réévaluation de ces pratiques. Les militants intersexués ont souligné les conséquences physiques et psychologiques néfastes des interventions chirurgicales et médicales non consenties. Ils ont plaidé pour le droit à l’autonomie corporelle et à des soins médicaux basés sur les besoins individuels plutôt que sur des normes sociétales.</p>
+<p>En réponse à ces critiques, de nouvelles lignes directrices ont été élaborées en 2006, connues sous le nom de “Con-sense Statement on Management of Intersex Disorders”<span class="citation" data-cites="consensu2018">(<a href="#ref-consensu2018" role="doc-biblioref"><span>“Consensus Statement on Management of Intersex Disorders”</span> 2018</a>)</span>. Ces lignes directrices mettent l’accent sur la nécessité d’informer et de respecter les souhaits des personnes intersexuées et de leurs familles. Elles recommandent de retarder les interventions chirurgicales non urgentes jusqu’à ce que la personne intersexuée soit suffisamment âgée pour participer à la prise de décision concernant son propre corps.</p>
+</section>
+</section>
+<section id="la-théorie-unifiée-du-sexe" class="level1">
+<h1>La théorie unifiée du sexe</h1>
+<p>La “théorie unifiée du sexe” propose une approche intégrée pour comprendre la détermination du sexe. Elle combine trois éléments principaux :</p>
+<ol type="1">
+<li><p><strong>Hormones</strong></p></li>
+<li><p><strong>Chromosomes</strong></p></li>
+<li><p><strong>Gènes</strong></p></li>
+</ol>
+<p>Cette théorie suggère que pour déterminer le sexe d’une personne, il faut prendre en compte ces trois facteurs ensemble, plutôt que de se concentrer sur un seul.</p>
+<p>Imaginons une personne appelée Alex. Pour déterminer le sexe d’Alex, voici comment la théorie unifiée fonctionnerait :</p>
+<ol type="1">
+<li><p><strong>Chromosomes</strong> : Alex a deux chromosomes sexuels X et Y (typique du modèle masculin). Cependant, certaines personnes peuvent avoir des combinaisons différentes, comme XXY ou X0.</p></li>
+<li><p><strong>Hormones</strong> : Alex a des niveaux de testostérone et d’œstrogène. Selon cette théorie, il est important de mesurer ces niveaux car ils influencent le développement des caractéristiques sexuelles secondaires comme la pilosité, la voix et la masse musculaire.</p></li>
+<li><p><strong>Gènes</strong> : Les gènes spécifiques d’Alex jouent également un rôle. Par exemple, le gène SRY sur le chromosome Y déclenche le développement des testicules, qui à leur tour produisent des hormones sexuelles masculines.</p></li>
+</ol>
+<section id="complexité-et-critique" class="level4">
+<h4 class="anchored" data-anchor-id="complexité-et-critique">Complexité et critique</h4>
+<p>Malgré l’attrait de cette théorie intégrée, elle est contestée car elle simplifie la réalité complexe des corps humains. Prenons quelques points critiques :</p>
+<ul>
+<li><p><strong>Variations chromosomiques</strong> : Certaines personnes, comme celles atteintes du syndrome de Turner (X0) ou du syndrome de Klinefelter (XXY), ne correspondent pas au modèle binaire simple de XX ou XY. Pourtant, elles développent des caractéristiques sexuelles variées qui ne sont pas entièrement expliquées par leurs chromosomes seuls.</p></li>
+<li><p><strong>Influences hormonales</strong> : Les niveaux d’hormones peuvent varier considérablement entre les individus, même avec les mêmes chromosomes sexuels. Par exemple, une personne XY peut avoir une insensibilité aux androgènes, ce qui signifie que malgré des niveaux normaux de testostérone, le corps ne répond pas à cette hormone de manière typique.</p></li>
+<li><p><strong>Facteurs génétiques</strong> : Au-delà des gènes SRY, de nombreux autres gènes influencent le développement sexuel. Par exemple, les mutations dans les gènes AR (récepteurs des androgènes) peuvent entraîner des différences significatives dans le développement sexuel, indépendamment des chromosomes.</p></li>
+</ul>
+</section>
+<section id="conclusion" class="level4">
+<h4 class="anchored" data-anchor-id="conclusion">Conclusion</h4>
+<p>La théorie unifiée du sexe tente d’offrir une vue plus complète en intégrant hormones, chromosomes et gènes. Cependant, elle est critiquée pour ne pas saisir pleinement la diversité et la complexité des expériences humaines en matière de sexe et de genre. Les approches réductionnistes, bien qu’utiles pour simplifier les concepts complexes, échouent souvent à capturer toute la réalité des variations biologiques et sociales. Evelyn Fox Keller <span class="citation" data-cites="hirsch2015 keller2009 keller2009a body/pol2013 science1988 science1988a">(<a href="#ref-hirsch2015" role="doc-biblioref">Hirsch and Keller 2015</a>; <a href="#ref-keller2009" role="doc-biblioref">KELLER 2009</a>; <a href="#ref-keller2009a" role="doc-biblioref">Keller 2009</a>; <a href="#ref-body/pol2013" role="doc-biblioref">Jacobus, Fox Keller, and Shuttleworth 2013</a>; <a href="#ref-science1988" role="doc-biblioref"><span>“Science and Gender: Evelyn Fox Keller”</span> 1988a</a>, <a href="#ref-science1988a" role="doc-biblioref">1988b</a>)</span>et Ruth Hubbard <span class="citation" data-cites="hubbard1995 hubbard1985">(<a href="#ref-hubbard1995" role="doc-biblioref">Hubbard 1995</a>; <a href="#ref-hubbard1985" role="doc-biblioref">Hubbard et al. 1985</a>)</span>soulignent que cette complexité ne peut pas être réduite à une simple combinaison de trois facteurs.Références</p>
+<ul>
+<li><p>Kessler, Suzanne J., 1990, « The medical construction of gender: Case management of intersexed infants », Signs, vol.&nbsp;16, no 1, p. 3-26.</p></li>
+<li><p>Kessler, Suzanne J., 1998, Lessons from the Intersexed, New Brunswick, Rutgers University Press.</p></li>
+<li><p>Bleier, Ruth (1986). « Sex Differences Research: Science or Belief? ». In Bleier, Ruth (éd.), Feminist Approaches to Science. New York, Pergamon Press.</p></li>
+<li><p>Laqueur, T. (2013). La fabrique du sexe. Gallimard.</p></li>
+<li><p>Bleier, R. (1984). Science and Gender: A Critique of Biology and Its Theories on Women. Pergamon Press.</p></li>
+<li><p>Schiebinger, L. (1993). Nature’s Body: Gender in the Making of Modern Science. Beacon Press.</p></li>
+<li><p>Oudshoorn, Nelly. (1994). Beyond the Natural Body: An Archaeology of Sex Hormones. Routledge.</p></li>
+<li><p>Fausto-Sterling, Anne. (2000). Sexing the Body: Gender Politics and the Construction of Sexuality. Basic Books.</p></li>
+<li><p>Richardson, Sarah S. (2013). Sex Itself: The Search for Male and Female in the Human Genome. University of Chicago Press.</p></li>
+</ul>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-consensu2018" class="csl-entry" role="listitem">
+<span>“Consensus Statement on Management of Intersex Disorders.”</span> 2018. In, 1317–17. American Academy of Pediatrics. <a href="https://doi.org/10.1542/9781610021494-part06-consensus_statement2">https://doi.org/10.1542/9781610021494-part06-consensus_statement2</a>.
+</div>
+<div id="ref-hirsch2015" class="csl-entry" role="listitem">
+Hirsch, Marianne, and Evelyn Fox Keller. 2015. <em>Conflicts in Feminism</em>. Routledge. <a href="https://doi.org/10.4324/9780203699065">https://doi.org/10.4324/9780203699065</a>.
+</div>
+<div id="ref-hubbard1995" class="csl-entry" role="listitem">
+Hubbard, Ruth. 1995. <span>“Transparent Women, Visible Genes, and New Conceptions of Disease.”</span> <em>Cambridge Quarterly of Healthcare Ethics</em> 4 (3): 291–95. <a href="https://doi.org/10.1017/s0963180100006034">https://doi.org/10.1017/s0963180100006034</a>.
+</div>
+<div id="ref-hubbard1985" class="csl-entry" role="listitem">
+Hubbard, Ruth, R. C. Lewontin, Steven Rose, and Leon J. Kamin. 1985. <span>“Putting Genes in Their Place.”</span> <em>The Women’s Review of Books</em> 2 (4): 7. <a href="https://doi.org/10.2307/4019622">https://doi.org/10.2307/4019622</a>.
+</div>
+<div id="ref-body/pol2013" class="csl-entry" role="listitem">
+Jacobus, Mary, Evelyn Fox Keller, and Sally Shuttleworth, eds. 2013. <em>Body/Politics</em>. Routledge. <a href="https://doi.org/10.4324/9780203760017">https://doi.org/10.4324/9780203760017</a>.
+</div>
+<div id="ref-keller2009" class="csl-entry" role="listitem">
+KELLER, EVELYN FOX. 2009. <span>“Making Sense of Life,”</span> June. <a href="https://doi.org/10.2307/j.ctvjz82ht">https://doi.org/10.2307/j.ctvjz82ht</a>.
+</div>
+<div id="ref-keller2009a" class="csl-entry" role="listitem">
+Keller, Evelyn Fox. 2009. <span>“The Century of the Gene,”</span> June. <a href="https://doi.org/10.2307/j.ctvk12qhz">https://doi.org/10.2307/j.ctvk12qhz</a>.
+</div>
+<div id="ref-science1988" class="csl-entry" role="listitem">
+<span>“Science and Gender: Evelyn Fox Keller.”</span> 1988a. American Psychological Association (APA). <a href="https://doi.org/10.1037/e526622004-001">https://doi.org/10.1037/e526622004-001</a>.
+</div>
+<div id="ref-science1988a" class="csl-entry" role="listitem">
+———. 1988b. American Psychological Association (APA). <a href="https://doi.org/10.1037/e522852011-001">https://doi.org/10.1037/e522852011-001</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

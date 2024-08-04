@@ -1,0 +1,6 @@
+---
+title: "Bienvenue sur mon blog"
+author: "Pierre Brasseur"
+date: "2024-07-15"
+categories: [nouveautés]
+---
