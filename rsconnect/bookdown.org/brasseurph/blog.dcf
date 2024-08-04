@@ -5,7 +5,7 @@ account: brasseurph
 server: bookdown.org
 hostUrl: https://bookdown.org/__api__
 appId: 14393
-bundleId: 99386
+bundleId: 99387
 url: https://bookdown.org/brasseurph/blog/
 version: 1
 asMultiple: FALSE
